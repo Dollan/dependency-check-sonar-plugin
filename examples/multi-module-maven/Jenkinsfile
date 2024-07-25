@@ -5,7 +5,7 @@ pipeline {
       steps {
         withSonarQubeEnv(installationName: 'sq1') { 
           sh 'mvn dependency:resolve'
-          sh  'mvn sonar:sonar sonar.dependencyCheck.jsonReportPath=${WORKSPACE}/dependency-check-report.json sonar.dependencyCheck.htmlReportPath=${WORKSPACE}/dependency-check-report.html'
+          sh  'mvn clean deploy sonar:sonar sonar.dependencyCheck.jsonReportPath=${WORKSPACE}/dependency-check-report.json sonar.dependencyCheck.htmlReportPath=${WORKSPACE}/dependency-check-report.html'
         }
       }
     }
