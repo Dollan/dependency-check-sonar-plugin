@@ -4,6 +4,7 @@ pipeline {
     stage('Scan') {
       steps {
         withSonarQubeEnv(installationName: 'sq1') { 
+          sh 'mvn clean package dependency-check:aggregate'
           sh  'mvn sonar:sonar sonar.dependencyCheck.jsonReportPath=${WORKSPACE}/dependency-check-report.json sonar.dependencyCheck.htmlReportPath=${WORKSPACE}/dependency-check-report.html'
         }
       }
